@@ -1,24 +1,24 @@
 steps:
-# Build vote service
+# Build vote
 - name: 'gcr.io/cloud-builders/docker'
   args: ['build', '-t', 'asia-south1-docker.pkg.dev/$PROJECT_ID/microservices-repo/vote', './vote']
 
-# Push vote
 - name: 'gcr.io/cloud-builders/docker'
   args: ['push', 'asia-south1-docker.pkg.dev/$PROJECT_ID/microservices-repo/vote']
 
-# Build result service
+# Build result
 - name: 'gcr.io/cloud-builders/docker'
   args: ['build', '-t', 'asia-south1-docker.pkg.dev/$PROJECT_ID/microservices-repo/result', './result']
 
-# Push result
 - name: 'gcr.io/cloud-builders/docker'
   args: ['push', 'asia-south1-docker.pkg.dev/$PROJECT_ID/microservices-repo/result']
 
-# Build worker service
+# Build worker
 - name: 'gcr.io/cloud-builders/docker'
   args: ['build', '-t', 'asia-south1-docker.pkg.dev/$PROJECT_ID/microservices-repo/worker', './worker']
 
-# Push worker
 - name: 'gcr.io/cloud-builders/docker'
   args: ['push', 'asia-south1-docker.pkg.dev/$PROJECT_ID/microservices-repo/worker']
+
+options:
+  logging: CLOUD_LOGGING_ONLY
